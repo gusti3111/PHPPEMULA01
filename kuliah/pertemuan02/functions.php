@@ -23,3 +23,30 @@ function query($query)
   }
   return $rows;
 }
+
+
+function tambah($data)
+{
+  // menghubungkan ke database lewat fungsi koneksi
+  $conn = koneksi();
+
+  //post atau tambahkan data ke database
+  $nama = htmlspecialchars($data['nama']);
+  $NIK = htmlspecialchars($data['NIK']);
+  $email = htmlspecialchars($data['email']);
+  $jurusan = htmlspecialchars($data['jurusan']);
+  $gambar = htmlspecialchars($data['gambar']);
+
+  //query data dari database pakai syntax sql INSERT
+  $query = "INSERT INTO
+              students
+              VALUES
+              (null, '$nama', '$NIK', '$email', '$jurusan', '$gambar')";
+
+  mysqli_query($conn, $query);
+
+  $affected_rows = mysqli_affected_rows($conn);
+  var_dump($affected_rows);
+
+  return $affected_rows;
+}
