@@ -116,3 +116,32 @@ function change($data)
 
   return mysqli_affected_rows($conn);
 }
+
+// fungsi search
+// function cari($keyword)
+// {
+//   $conn = koneksi();
+//   $query = "SELECT * FROM students02
+//               WHERE 
+//             nama LIKE '%keyword%'
+//           ";
+
+//   $result = mysqli_query($conn, $query);
+//   $rows = [];
+//   // ambil data dari object result
+//   // mysqli_fetch_row() mengembalikan array numeric 
+
+//   while ($row = mysqli_fetch_assoc($result)) {
+//     $rows[] = $row;
+//   }
+//   return $rows;
+// }
+function cari($keyword)
+{
+  $query = "SELECT * FROM students02
+             WHERE 
+           nama LIKE '%$keyword%'
+          ";
+
+  return query($query);
+}

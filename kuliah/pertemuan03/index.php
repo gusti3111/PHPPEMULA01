@@ -5,6 +5,10 @@ require 'functions.php';
 // tampung  ke variabel students
 $students = query("SELECT * FROM students02");
 
+// tombol cari confditioon
+if (isset($_POST["cari"])) {
+  $students = cari($_POST["keyword"]);
+}
 
 ?>
 
@@ -21,6 +25,12 @@ $students = query("SELECT * FROM students02");
 <body>
   <h3>Daftar Mahasiswa</h3>
   <a href="tambah.php" class="tambah">SIGNUP</a>
+  <br></br>
+  <form action="" method="POST">
+    <input type="text" name="keyword" size="30" placeholder="input your text in here" autofocus autocomplete="off">
+    <button type="submit" name="cari">Cari</button>
+  </form>
+  <br></br>
   <table border="1" cellpadding="10" cellspacing="0">
     <tr>
       <th>#</th>
